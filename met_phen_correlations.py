@@ -20,4 +20,4 @@ dfs_corr = pd.concat(dfs)
 
 df_final = final_metabolites.merge(dfs_corr, on=['Metabolite', 'Stage'])
 df_final.drop(columns=['B_graminis_08', 'B_graminis_17'], inplace=True)
-df_final.round(2).to_csv('candidate_met.csv', index=False)
+df_final.round(2).to_csv('candidate_met_for_phen.csv', index=False)
