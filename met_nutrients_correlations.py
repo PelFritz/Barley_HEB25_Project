@@ -21,5 +21,5 @@ for df in candidate_met.groupby('Nutrient'):
         print(corr.head())
 
     corr_df = pd.concat(dfs)
-    save_dir = 'Candidate_met_' + df[0] + '.csv'
+    save_dir = 'candidate_met_' + df[0] + '.csv'
     corr_df.to_csv(save_dir)
