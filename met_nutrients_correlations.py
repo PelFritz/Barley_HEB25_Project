@@ -15,11 +15,12 @@ for df in candidate_met.groupby('Nutrient'):
         corr = filter_data.corr()[df[0]]
         corr.drop(labels=[df[0]], axis=0, inplace=True)
         corr = corr.reset_index().rename(columns={'index': 'Metabolite', df[0]: 'Pearson_corr'})
-        corr['Stage'] = [df[0] for i in range(0, corr.shape[0])]
+        corr['Nutrient'] = [df[0] for i in range(0, corr.shape[0])]
+        corr['Stage'] = [df2[0] for i in range(0, corr.shape[0])]
         corr = corr.merge(size, on=['Metabolite']).rename(columns={'size': 'Occurence'})
         dfs.append(corr)
         print(corr.head())
 
     corr_df = pd.concat(dfs)
     save_dir = 'candidate_met_' + df[0] + '.csv'
-    corr_df.round(2).to_csv(save_dir)
+    corr_df.round(2).to_csv(save_dir, index=False)

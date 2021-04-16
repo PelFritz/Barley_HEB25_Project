@@ -12,7 +12,7 @@ Phenotype = []
 stage = []
 sel_metabolite, dev_stage, nutrient = [], [], []
 # Predictions
-for phen in ['Ca', 'Mn', 'Na', 'Mg', 'K']:
+for phen in ['B', 'Ca', 'Mn', 'Na', 'Mg', 'K']:
     print('Phenotype: {}'.format(phen))
     for timepoint in data_2017.groupby('Stage'):
         print('Time point: {}'.format(timepoint[0]))

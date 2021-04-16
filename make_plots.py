@@ -21,10 +21,10 @@ plt.show()
 
 # Presenting predictive performances on nutrients using metabolites
 nut_scores = pd.read_csv('HSIC_nutrients.csv')
-nut_scores.replace({'A': 'Shooting', 'B': 'Heading', 'C': 'Ears',
+nut_scores['Stage'].replace({'A': 'Shooting', 'B': 'Heading', 'C': 'Ears',
                     'D': 'Senescence', 'Phenotype': 'Nutrients'}, inplace=True)
 nut_scores.rename(columns={'Phenotype': 'Nutrient'}, inplace=True)
-fig, ax = plt.subplots(1, 5, figsize=(16, 5), sharey='row')
+fig, ax = plt.subplots(1, 6, figsize=(16, 5), sharey='row')
 for i, df in enumerate(nut_scores.groupby('Nutrient')):
     g = sns.boxplot(x='Stage', y='R-square', hue='Stage', data=df[1], ax=ax[i], showmeans=True,
                     meanprops={"marker": "o",
