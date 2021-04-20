@@ -37,3 +37,10 @@ for i, df in enumerate(nut_scores.groupby('Nutrient')):
     ax[i].set_title(df[0], fontweight='bold')
 
 plt.show()
+
+# Distribution of samples across families at different developmental stages
+data_2017 = pd.read_csv('data.frame.2017.csv', sep=';', usecols=['Stage', 'ID', 'Sample', 'Genotype'])
+data_2017['Family'] = [genotype.split('_')[1] for genotype in data_2017['Genotype']]
+data_2017.replace({'A': 'Shooting', 'B': 'Heading', 'C': 'Ears', 'D': 'Senescence'}, inplace=True)
+sns.catplot(x='Family', data=data_2017, col='Stage', col_wrap=2, kind='count', palette='rocket_r')
+plt.show()
